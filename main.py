@@ -1,10 +1,16 @@
 from guess import Guess
 from replit import clear
+from time import sleep
 import words
 import random
 
 def main():
-  game()
+  playing = True
+  while playing:
+    game()
+    sleep(1)
+    print()
+    playing = promptReplay()
     
 def game():
   Guess.init()
@@ -58,6 +64,10 @@ def inputGuess(wordlist):
     guess = input('Type in word: ').lower()
     valid = Guess.verify(guess, wordlist)
   return guess
+
+def promptReplay():
+  inp = input('Type "y" to play again: ').lower()
+  return inp == 'y'
 
 if __name__ == "__main__":
   main()
